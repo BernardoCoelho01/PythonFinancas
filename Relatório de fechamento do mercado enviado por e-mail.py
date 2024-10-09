@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import mplcyberpunk
 
-# Pegar cotações históricas dos ativos selecionados abaixo:
+# Pegando cotações históricas dos ativos selecionados abaixo:
 tickers = ['^BVSP', '^GSPC', 'BRL=X']
 
 # Tabela Original:
@@ -69,7 +69,10 @@ image_paths = ['imagens/Ibovespa.png', 'imagens/S&P500.png', 'imagens/Dolar.png'
 # Criando o objeto MIMEMultipart
 msg = MIMEMultipart('related')
 
-# Adicione o texto do email
+# Adicionando o assunto do email
+msg['Subject'] = 'Retorno Diário/Gráfico Semestral'
+
+# Adicionando o texto do email
 msg_text = MIMEText(f'<h1>Gráficos de Performance Semestral</h1><p>Retorno Diário ({data}) IBOVESPA: {retorno_ibov}<p><img src="cid:image1"><p><p><br>Retorno Diário ({data}) S&P500: {retorno_sep}<p><img src="cid:image2"><p><p><br>Retorno Diário ({data}) DÓLAR: {retorno_dolar}<p><img src="cid:image3"></p>', 'html')
 msg.attach(msg_text)
 
